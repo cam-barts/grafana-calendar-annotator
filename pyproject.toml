@@ -1,0 +1,31 @@
+[tool.poetry]
+name = "grafana-calendar-annotator"
+version = "0.0.1"
+description = "Generate Grafana Annotations from calendar events"
+authors = ["Cam <camerond.barts@gmail.com>"]
+license = "MIT"
+readme = "README.md"
+packages = [{include = "grafana_calendar_annotator"}]
+
+[tool.poetry.dependencies]
+python = "^3.7"
+requests = "^2.28.1"
+python-decouple = "^3.6"
+ics = "^0.7.2"
+rich-click = "^1.5.2"
+
+[tool.poetry.group.dev.dependencies]
+rich = "^12.6.0"
+pre-commit = "^2.20.0"
+commitizen = "^2.35.0"
+bandit = "^1.7.4"
+
+
+[tool.commitizen]
+name = "cz_conventional_commits"
+version = "0.0.1"
+tag_format = "$version"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
