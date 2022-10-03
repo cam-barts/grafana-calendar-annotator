@@ -27,7 +27,7 @@ Generate [annotations](https://grafana.com/docs/grafana/latest/dashboards/build-
 
 ## Contributing
 
-Please read [CONTRIBUTING.md](CONTRIBUTING.md) for details on our code
+Please read [CONTRIBUTING.md](https://github.com/cam-barts/grafana-calendar-annotator/blob/main/CONTRIBUTING.md) for details on our code
 of conduct, and the process for submitting pull requests to us.
 
 ## Versioning
@@ -43,5 +43,4 @@ who participated in this project.
 
 ## License
 
-This project is licensed under the [MIT](LICENSE.md).
-
+This project is licensed under the [MIT](https://github.com/cam-barts/grafana-calendar-annotator/blob/main/LICENSE.txt).
