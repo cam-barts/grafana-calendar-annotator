@@ -24,7 +24,7 @@ classifiers = [
 "Code Of Conduct" = "https://github.com/cam-barts/grafana-calendar-annotator/blob/main/CODE_OF_CONDUCT.md"
 
 [tool.poetry.dependencies]
-python = "^3.7"
+python = "^3.7, <3.10"
 requests = "^2.28.1"
 python-decouple = "^3.6"
 ics = "^0.7.2"
@@ -37,7 +37,7 @@ commitizen = "^2.35.0"
 bandit = "^1.7.4"
 
 [tool.poetry.scripts]
-grafana-calendar-annotator = 'src.cli:cli'
+grafana-calendar-annotator = 'grafana_calendar_annotator.cli:cli'
 
 [tool.commitizen]
 name = "cz_conventional_commits"
