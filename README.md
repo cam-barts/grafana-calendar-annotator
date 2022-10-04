@@ -1,5 +1,7 @@
 # Grafana Calendar Annotator
 
+[![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/6552/badge)](https://bestpractices.coreinfrastructure.org/projects/6552)
+
 Generate [annotations](https://grafana.com/docs/grafana/latest/dashboards/build-dashboards/annotate-visualizations/) in Grafana from events pulled from an ICS calendar.
 
 ## Getting Started

@@ -1,7 +1,6 @@
 import rich_click as click
-from decouple import config
-
 import src.main as main
+from decouple import config
 
 GRAFANA_BASE_URL = config("GRAFANA_URL", "")
 GRAFANA_API_TOKEN = config("GRAFANA_TOKEN", "")

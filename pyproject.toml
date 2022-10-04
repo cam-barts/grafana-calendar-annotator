@@ -5,7 +5,7 @@ description = "Generate Grafana Annotations from calendar events"
 authors = ["Cam <camerond.barts@gmail.com>"]
 license = "MIT"
 readme = "README.md"
-packages = [{include = "src"}]
+packages = [{include = "grafana-calendar-annotator"}]
 repository = "https://github.com/cam-barts/grafana-calendar-annotator"
 keywords = ["grafana", "monitoring", "annotations", "calendar", "ics", "ical"]
 classifiers = [
