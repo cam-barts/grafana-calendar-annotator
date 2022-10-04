@@ -1,11 +1,11 @@
 [tool.poetry]
 name = "grafana-calendar-annotator"
-version = "0.0.1"
+version = "0.1.1"
 description = "Generate Grafana Annotations from calendar events"
 authors = ["Cam <camerond.barts@gmail.com>"]
 license = "MIT"
 readme = "README.md"
-packages = [{include = "grafana-calendar-annotator"}]
+packages = [{include = "grafana_calendar_annotator"}]
 repository = "https://github.com/cam-barts/grafana-calendar-annotator"
 keywords = ["grafana", "monitoring", "annotations", "calendar", "ics", "ical"]
 classifiers = [
