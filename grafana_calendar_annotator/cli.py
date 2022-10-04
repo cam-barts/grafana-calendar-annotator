@@ -1,5 +1,5 @@
+import lib
 import rich_click as click
-import src.main as main
 from decouple import config
 
 GRAFANA_BASE_URL = config("GRAFANA_URL", "")
@@ -87,12 +87,12 @@ def cli(
             f"Are you sure you wish to delete the annotations for the following tags?\n{tags}",
             abort=True,
         ):
-            main.delete_annotations_for_tag(grafana_url, grafana_api_key, list(tags))
+            lib.delete_annotations_for_tag(grafana_url, grafana_api_key, list(tags))
     if not delete_only:
-        events = main.get_events_timeline_from_url(calendar_url)
+        events = lib.get_events_timeline_from_url(calendar_url)
         for event in events:
             print(
-                main.generate_annotation_for_event(
+                lib.generate_annotation_for_event(
                     grafana_url,
                     grafana_api_key,
                     event,
