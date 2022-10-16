@@ -17,31 +17,17 @@ $ grafana-calendar-annotator --help
 
  Usage: grafana-calendar-annotator [OPTIONS]
 
-╭─ Options ─────────────────────────────────────────────────────────────────────────────────────────────────────────╮
-│ *  --grafana-url                 -g      TEXT         Url of the Grafana instance to populate annotations into    │
-│                                                       [required]                                                  │
-│ *  --grafana-api-key             -k      TEXT         API key to authenticate to the Grafana instance [required]  │
-│ *  --calendar-url                -c      TEXT         URL of the ICS Calendar to use to populate events from      │
-│                                                       [required]                                                  │
-│ *  --flatten/--no-flatten        -f/-nf               Flattening events will create a single time annotation      │
-│                                                       instead of a span                                           │
-│                                                       [default: no-flatten]                                       │
-│                                                       [required]                                                  │
-│ *  --flatten-direction           -fd     [start|end]  Create the annotation at the start or the end of the event  │
-│                                                       if the event is flattened                                   │
-│                                                       [default: (start)]                                          │
-│                                                       [required]                                                  │
-│ *  --tags                        -t      TEXT         List of tags to add to created annotations                  │
-│                                                       [default: (generated,)]                                     │
-│                                                       [required]                                                  │
-│ *  --regenerate/--no-regenerate  -r/-nr               Regenerating will delete all annotations that have the same │
-│                                                       set of tags before creating new annotations                 │
-│                                                       [default: regenerate]                                       │
-│                                                       [required]                                                  │
-│    --delete-only                 -d                   Only delete annotations with tags, do not create new        │
-│                                                       annotations                                                 │
-│    --help                                             Show this message and exit.                                 │
-╰───────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+╭─ Options ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
+│ *  --grafana-url                 -g      TEXT         Url of the Grafana instance to populate annotations into [required]                                                                                    │
+│ *  --grafana-api-key             -k      TEXT         API key to authenticate to the Grafana instance [required]                                                                                             │
+│ *  --calendar-url                -c      TEXT         URL of the ICS Calendar to use to populate events from [required]                                                                                      │
+│ *  --flatten/--no-flatten        -f/-nf               Flattening events will create a single time annotation instead of a span [default: no-flatten] [required]                                              │
+│ *  --flatten-direction           -fd     [start|end]  Create the annotation at the start or the end of the event if the event is flattened [default: (start)] [required]                                     │
+│ *  --tags                        -t      TEXT         List of tags to add to created annotations [default: (generated,)] [required]                                                                          │
+│ *  --regenerate/--no-regenerate  -r/-nr               Regenerating will delete all annotations that have the same set of tags before creating new annotations [default: regenerate] [required]               │
+│    --delete-only                 -d                   Only delete annotations with tags, do not create new annotations                                                                                       │
+│    --help                                             Show this message and exit.                                                                                                                            │
+╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
 ```
 
 The following flags can be set with environment variables:
@@ -80,13 +66,6 @@ Pipx is useful for [installing and running applications in isolated environments
 pipx install grafana_calendar_annotator
 ```
 
-## Running the tests
-
-<!--TODO-->
-
-## Deployment
-
-<!--TODO-->
 
 ## Built With
 
