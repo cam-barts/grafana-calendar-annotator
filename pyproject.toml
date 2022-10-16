@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "grafana-calendar-annotator"
-version = "0.1.1"
+version = "0.1.2"
 description = "Generate Grafana Annotations from calendar events"
 authors = ["Cam <camerond.barts@gmail.com>"]
 license = "MIT"
@@ -41,7 +41,7 @@ grafana-calendar-annotator = 'grafana_calendar_annotator.cli:cli'
 
 [tool.commitizen]
 name = "cz_conventional_commits"
-version = "0.1.1"
+version = "0.1.2"
 tag_format = "$version"
 version_files = ["pyproject.toml"]
 
