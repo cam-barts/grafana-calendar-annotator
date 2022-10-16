@@ -19,10 +19,7 @@ All types of contributions are encouraged and valued. See the [Table of Contents
 - [Reporting Bugs](#reporting-bugs)
 - [Suggesting Enhancements](#suggesting-enhancements)
 - [Your First Code Contribution](#your-first-code-contribution)
-- [Improving The Documentation](#improving-the-documentation)
 - [Styleguides](#styleguides)
-- [Commit Messages](#commit-messages)
-
 
 ## I Have a Question
 
@@ -65,7 +62,7 @@ A good bug report shouldn't leave others needing to chase you up for more inform
 <!-- omit in toc -->
 #### How Do I Submit a Good Bug Report?
 
-> You must never report security related issues, vulnerabilities or bugs including sensitive information to the issue tracker, or elsewhere in public. Instead sensitive bugs must be sent by email to .
+> You must never report security related issues, vulnerabilities or bugs including sensitive information to the issue tracker, or elsewhere in public. Instead sensitive bugs must be sent by email to vulns@coder.cam.
 <!-- You may add a PGP key to allow the messages to be sent encrypted as well. -->
 
 We use GitHub issues to track bugs and errors. If you run into an issue with the project:
@@ -80,8 +77,6 @@ Once it's filed:
 - The project team will label the issue accordingly.
 - A team member will try to reproduce the issue with your provided steps. If there are no reproduction steps or no obvious way to reproduce the issue, the team will ask you for those steps and mark the issue as `needs-repro`. Bugs with the `needs-repro` tag will not be addressed until they are reproduced.
 - If the team is able to reproduce the issue, it will be marked `needs-fix`, as well as possibly other tags (such as `critical`), and the issue will be left to be [implemented by someone](#your-first-code-contribution).
-
-<!-- You might want to create an issue template for bugs and errors that can be used as a guide and that defines the structure of the information to be included. If you do so, reference it here in the description. -->
 
 
 ### Suggesting Enhancements
@@ -104,22 +99,98 @@ Enhancement suggestions are tracked as [GitHub issues](https://github.com/cam-ba
 - Use a **clear and descriptive title** for the issue to identify the suggestion.
 - Provide a **step-by-step description of the suggested enhancement** in as many details as possible.
 - **Describe the current behavior** and **explain which behavior you expected to see instead** and why. At this point you can also tell which alternatives do not work for you.
-- You may want to **include screenshots and animated GIFs** which help you demonstrate the steps or point out the part which the suggestion is related to. You can use [this tool](https://www.cockos.com/licecap/) to record GIFs on macOS and Windows, and [this tool](https://github.com/colinkeenan/silentcast) or [this tool](https://github.com/GNOME/byzanz) on Linux. <!-- this should only be included if the project has a GUI -->
 - **Explain why this enhancement would be useful** to most Grafana Calendar Annotator users. You may also want to point out the other projects that solved it better and which could serve as inspiration.
 
-<!-- You might want to create an issue template for enhancement suggestions that can be used as a guide and that defines the structure of the information to be included. If you do so, reference it here in the description. -->
-
-<!--TODO Create Issue Template-->
 
 ### Your First Code Contribution
-<!-- TODO include Setup of env, IDE and typical getting started instructions? -->
 
-### Improving The Documentation
-<!-- TODO Updating, improving and correcting the documentation-->
+This project expects `poetry` to be installed. See installation instructions [here](https://python-poetry.org/docs/#installing-with-the-official-installer).
+
+This project makes heavy use of [pre-commit](https://pre-commit.com/) to enforce style standards for both code and commit messages. After cloning and installing dev dependancies with `poetry install`, the `pre-commit` command should be available. Run `pre-commit install` to ensure all hooks are installed and useful for your environment.
+
+```bash
+git clone https://github.com/cam-barts/grafana-calendar-annotator.git # or whatever your fork url is
+cd grafana-calendar-annotator
+poetry install
+pre-commit install
+```
+
+A current list of hooks can be found at https://github.com/cam-barts/grafana-calendar-annotator/blob/main/.pre-commit-config.yaml, but at the time of writing these hooks run at commit time:
+
+- [Commitizen](https://pypi.org/project/commitizen/) for standardized commit messages
+- [pycln](https://pypi.org/project/pycln/) to clean unused imports
+- [isort](https://pypi.org/project/isort/) to keep imports sorted
+- [black](https://pypi.org/project/black/) to format code in a standard way
+- [bandit](https://pypi.org/project/bandit/) to check for security antipatterns in code
+- [pip-audit](https://pypi.org/project/pip-audit/) to ensure dependancies don't introduce vulnerabilities
+- [trailing-whitespace](https://github.com/pre-commit/pre-commit-hooks#trailing-whitespace) Trims trailing whitespace
+- [check-ast](https://github.com/pre-commit/pre-commit-hooks#check-ast) prevents checking in syntax errors
+- [check-json](https://github.com/pre-commit/pre-commit-hooks#check-json) ensures json files are valid
+- [check-toml](https://github.com/pre-commit/pre-commit-hooks#check-toml) ensures toml files are valid
+- [check-yaml](https://github.com/pre-commit/pre-commit-hooks#check-yaml) ensures yaml files are valid
+
 
 ## Styleguides
+
+### Code
+
+As mentioned in the previous section, pre-commit will ensure that everything is stylistically acceptable. After you `git add` changes to the staging area, run `pre-commit run --all-files` to format all code and ensure style guidelines are adhered to.
+
 ### Commit Messages
-<!-- TODO Include section about commitizen-->
+
+Commit messages are validated using [commitizen](https://pypi.org/project/commitizen/) using conventional commit style. The best way to ensure that the commit matches the expected style is to replace `git commit -m ...` with `cz commit` and follow the prompts in the terminal.
+
+> NOTE: Your commit *will* fail if changes don't pass pre-commit checks. It's recommended to run `pre-commit run --all-files` before `cz commit`
+
+**Example Commit Message**
+
+The following is the output of `cz example`
+
+```txt
+fix: correct minor typos in code
+
+see the issue for details on the typos fixed
+
+closes issue #12
+```
+
+**Info**
+
+The following is the output of `cz info`
+
+```txt
+The commit contains the following structural elements, to communicate
+intent to the consumers of your library:
+
+fix: a commit of the type fix patches a bug in your codebase
+(this correlates with PATCH in semantic versioning).
+
+feat: a commit of the type feat introduces a new feature to the codebase
+(this correlates with MINOR in semantic versioning).
+
+BREAKING CHANGE: a commit that has the text BREAKING CHANGE: at the beginning of
+its optional body or footer section introduces a breaking API change
+(correlating with MAJOR in semantic versioning).
+A BREAKING CHANGE can be part of commits of any type.
+
+Others: commit types other than fix: and feat: are allowed,
+like chore:, docs:, style:, refactor:, perf:, test:, and others.
+
+We also recommend improvement for commits that improve a current
+implementation without adding a new feature or fixing a bug.
+
+Notice these types are not mandated by the conventional commits specification,
+and have no implicit effect in semantic versioning (unless they include a BREAKING CHANGE).
+
+A scope may be provided to a commit’s type, to provide additional contextual
+information and is contained within parenthesis, e.g., feat(parser): add ability to parse arrays.
+
+<type>[optional scope]: <description>
+
+[optional body]
+
+[optional footer]
+```
 
 <!-- omit in toc -->
 ## Attribution

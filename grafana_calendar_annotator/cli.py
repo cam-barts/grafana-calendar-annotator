@@ -1,6 +1,7 @@
-import lib
 import rich_click as click
 from decouple import config
+
+from . import lib
 
 GRAFANA_BASE_URL = config("GRAFANA_URL", "")
 GRAFANA_API_TOKEN = config("GRAFANA_TOKEN", "")
@@ -21,6 +22,7 @@ url = "https://cfainstitute.atlassian.net/wiki/rest/calendar-services/1.0/calend
     show_default=GRAFANA_BASE_URL,
     required=True,
     type=str,
+    help="Url of the Grafana instance to populate annotations into",
 )
 @click.option(
     "--grafana-api-key",
@@ -31,8 +33,16 @@ url = "https://cfainstitute.atlassian.net/wiki/rest/calendar-services/1.0/calend
     show_default=GRAFANA_API_TOKEN,
     required=True,
     type=str,
+    help="API key to authenticate to the Grafana instance",
 )
-@click.option("--calendar-url", "-c", prompt=True, required=True, type=str)
+@click.option(
+    "--calendar-url",
+    "-c",
+    prompt=True,
+    required=True,
+    type=str,
+    help="URL of the ICS Calendar to use to populate events from",
+)
 @click.option(
     "--flatten/--no-flatten",
     "-f/-nf",
@@ -41,6 +51,7 @@ url = "https://cfainstitute.atlassian.net/wiki/rest/calendar-services/1.0/calend
     prompt=True,
     required=True,
     type=bool,
+    help="Flattening events will create a single time annotation instead of a span",
 )
 @click.option(
     "--flatten-direction",
@@ -50,6 +61,7 @@ url = "https://cfainstitute.atlassian.net/wiki/rest/calendar-services/1.0/calend
     prompt=True,
     required=True,
     type=click.Choice(["start", "end"], case_sensitive=False),
+    help="Create the annotation at the start or the end of the event if the event is flattened",
 )
 @click.option(
     "--tags",
@@ -59,6 +71,7 @@ url = "https://cfainstitute.atlassian.net/wiki/rest/calendar-services/1.0/calend
     multiple=True,
     required=True,
     type=str,
+    help="List of tags to add to created annotations",
 )
 @click.option(
     "--regenerate/--no-regenerate",
@@ -68,9 +81,16 @@ url = "https://cfainstitute.atlassian.net/wiki/rest/calendar-services/1.0/calend
     prompt=True,
     required=True,
     type=bool,
+    help="Regenerating will delete all annotations that have the same set of tags before creating new annotations",
 )
 @click.option(
-    "--delete-only", "-d", default=False, show_default=True, type=bool, flag_value=True
+    "--delete-only",
+    "-d",
+    default=False,
+    show_default=True,
+    type=bool,
+    flag_value=True,
+    help="Only delete annotations with tags, do not create new annotations",
 )
 def cli(
     grafana_url,

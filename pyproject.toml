@@ -43,6 +43,7 @@ grafana-calendar-annotator = 'grafana_calendar_annotator.cli:cli'
 name = "cz_conventional_commits"
 version = "0.1.1"
 tag_format = "$version"
+version_files = ["pyproject.toml"]
 
 [build-system]
 requires = ["poetry-core"]
